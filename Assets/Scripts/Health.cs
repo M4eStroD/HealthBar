@@ -1,14 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField] private int _maxHealth = 100;
 
     public int CurrentHealth { get; private set; }
     public int MaxHealth => _maxHealth;
 
-    public Action OnHealthChange;
+    public event Action HealthChanged;
 
     private void Start()
     {
@@ -19,13 +19,19 @@ public class Player : MonoBehaviour
     {
         CurrentHealth -= damage;
 
-        OnHealthChange?.Invoke();
+        if (CurrentHealth < 0)
+            CurrentHealth = 0;
+
+        HealthChanged?.Invoke();
     }
 
     public void Heal(int healValue)
     {
         CurrentHealth += healValue;
 
-        OnHealthChange?.Invoke();
+        if (CurrentHealth > MaxHealth)
+            CurrentHealth = MaxHealth;
+
+        HealthChanged?.Invoke();
     }
 }

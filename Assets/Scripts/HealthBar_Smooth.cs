@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class HealthBar_Smooth : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private Health _player;
 
     [SerializeField] private Slider _healthBar;
 
@@ -15,12 +15,12 @@ public class HealthBar_Smooth : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.OnHealthChange += ChangeHealthBar;
+        _player.HealthChanged += ChangeHealthBar;
     }
 
     private void OnDisable()
     {
-        _player.OnHealthChange -= ChangeHealthBar;
+        _player.HealthChanged -= ChangeHealthBar;
     }
 
     private void ChangeHealthBar()
@@ -31,20 +31,21 @@ public class HealthBar_Smooth : MonoBehaviour
             StartCoroutine(HealthBar());
     }
 
-    private float GetProcentBar()
+    private float GetPercentBar()
     {
         float hundredProcent = 100;
 
-        return (_player.CurrentHealth * hundredProcent / _player.MaxHealth) / hundredProcent;
+        return _player.CurrentHealth * hundredProcent / _player.MaxHealth;
     }
 
     private IEnumerator HealthBar()
     {
+        float reductionFactor = 100;
         _isActive = true;
 
-        while (_healthBar.value != GetProcentBar())
+        while (_healthBar.value != GetPercentBar() / reductionFactor)
         {
-            _healthBar.value = Mathf.MoveTowards(_healthBar.value, GetProcentBar(), _currentStep * Time.deltaTime);
+            _healthBar.value = Mathf.MoveTowards(_healthBar.value, GetPercentBar() / reductionFactor, _currentStep * Time.deltaTime);
             yield return null;
         }
 

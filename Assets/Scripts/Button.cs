@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    [SerializeField] private Health player;
 
     private int _damage = 10;
     private int _heal = 10;
