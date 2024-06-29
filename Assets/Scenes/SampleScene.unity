@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 473979914}
   - component: {fileID: 473979916}
   - component: {fileID: 473979915}
+  - component: {fileID: 473979917}
   m_Layer: 5
   m_Name: TextHealth
   m_TagString: Untagged
@@ -390,6 +391,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473979913}
   m_CullTransparentMesh: 1
+--- !u!114 &473979917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473979913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eac60f1c53b8fb74db090bf1063eb1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 2037814341}
+  _textHealth: {fileID: 473979915}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2037814341}
-  _textHealth: {fileID: 473979915}
   _healthBar: {fileID: 1153654687}
 --- !u!1 &1239633939
 GameObject:
@@ -1470,7 +1484,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2037814340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31587d07ec99d6346b8b42af3e089207, type: 3}
+  m_Script: {fileID: 11500000, guid: 1774064db3c7ab146b2cb1123649c175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
